@@ -101,7 +101,14 @@ const titles = [
 
 //print a list of books that "includes" the genre historical
 
-dates = []
-books.forEach((x) => dates.push(x.publishDate))
-console.log(dates.sort())
+books.forEach((x) => console.log(`${x.authorFirst} ${x.authorLast} wrote ${x.name}`))
+
+const dates = []
+books.forEach((x) => {
+  dates.push({name: x.name, date: x.publishDate})
+  dates.forEach((y) => y.date)
+})
+
+dates.forEach((x) => console.log(x))
+
 console.log(titles.sort())
