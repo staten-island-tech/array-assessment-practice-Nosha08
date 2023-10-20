@@ -100,3 +100,8 @@ const titles = [
 //was every book published within the last 100 years?
 
 //print a list of books that "includes" the genre historical
+
+dates = []
+books.forEach((x) => dates.push(x.publishDate))
+console.log(dates.sort())
+console.log(titles.sort())
