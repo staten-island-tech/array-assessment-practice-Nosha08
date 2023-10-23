@@ -101,14 +101,62 @@ const titles = [
 
 //print a list of books that "includes" the genre historical
 
+//#1
 books.forEach((x) => console.log(`${x.authorFirst} ${x.authorLast} wrote ${x.name}`))
 
+//#2
 const dates = []
+const names = []
 books.forEach((x) => {
-  dates.push({name: x.name, date: x.publishDate})
-  dates.forEach((y) => y.date)
+  dates.push(x.publishDate)
 })
 
-dates.forEach((x) => console.log(x))
+dates.sort()
 
+dates.forEach((y) => {
+  books.forEach((x) => {
+    if (y === x.publishDate) {
+      names.push(x.name + ' - ' + y)
+    }
+  })
+})
+
+
+console.log(names)
+
+//#3
 console.log(titles.sort())
+
+//#4
+books.forEach((x) => {
+  if (x.name === 'War and Peace') {
+    console.log(x.authorFirst + ' ' + x.authorLast)
+  }
+})
+
+//#5
+const old = books.filter((x) => x.publishDate < 1900)
+console.log(old.length)
+
+//#6
+const recent = books.filter((x) => x.publishDate > 1923)
+if (recent.length > 0) {
+  console.log(recent.length + ' recent books')
+}
+
+//#7
+const oldNew = books.filter((x) => x.publishDate > 1932)
+if (oldNew.length === books.length) {
+  console.log(true)
+} else {
+  console.log(false)
+}
+
+//#8
+const history = []
+books.forEach((x) => {
+  x.genre.filter((y) =>  { if (y === 'historical') {
+    history.push(x.name)
+  }})
+})
+console.log(history)
